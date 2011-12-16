@@ -25,6 +25,7 @@ e.g. do
 Keyboard use
 ------------
 
+<pre>
 (3rd and 4th rows of qwerty keyboard)
 zsxdcvgbhnjm           = C C# D ... through B, first octave
 
@@ -41,6 +42,7 @@ page up                = change octave +1
 page dn                = change octave -1
 
 enter                  = reset (stop all notes)
+</pre>
 
 
 Instruments
@@ -48,10 +50,12 @@ Instruments
 The list of MIDI instruments correspond to the standard list (you can find it on the web).
 Some highlights:
 
+<pre>
 0   acoustic grand piano
 40  violin
 73  flute
 123 bird tweet
+</pre>
 
 
 Mouse use
@@ -70,7 +74,7 @@ file extensions.  (e.g. IntelliJ has problem running in the first attempt)
 Troubleshooting
 ---------------
 
-*There is no sound!*
+**There is no sound!**
 
 Remember that this program uses MIDI sound.  Please check if your volume settings for MIDI is not
 at zero level or muted.
@@ -78,9 +82,11 @@ at zero level or muted.
 If you are a Windows user, you may not have java soundbank.  Just download one of this zipped
 sound files:
 
+<pre>
 http://java.sun.com/products/java-media/sound/soundbank-min.gm.zip
 http://java.sun.com/products/java-media/sound/soundbank-mid.gm.zip
 http://java.sun.com/products/java-media/sound/soundbank-deluxe.gm.zip
+</pre>
 (the last is the biggest file, 5 MB, but has the best quality sound)
 
 Unzip it, and put the file in your "C:\Program Files\Java\jre1.6.0\lib\audio" folder.
@@ -88,14 +94,14 @@ Your jre version may be different 1.6.0, but that's no problem.
 Just put it in the jreX.X.X\lib\audio directory.
 
 
-*In Linux, pressing a key results in the piano key being pressed rapidly multiple times*
+**In Linux, pressing a key results in the piano key being pressed rapidly multiple times**
 
 This is a known OS bug that affects many Linux distros.  Unfortunately we can do nothing about it.
 A workaround is to set your keyboard settings (through system settings) to disable key repeats
 while you are using this program.
 
 
-*Sound quality is very bad*
+**Sound quality is very bad**
 
 Well, it's MIDI :)
 
@@ -103,7 +109,7 @@ Note that different computers may produce different sounds.  It really depends o
 the embedded sound card being used.
 
 
-*Sometimes pressing many keys at the same time will produce an error beep instead of sounding a note* 
+**Sometimes pressing many keys at the same time will produce an error beep instead of sounding a note**
 
 This is normal and is caused by the internal wiring of a computer keyboard.  There are always some
 pairs of keys that cannot be pressed together in any keyboard.  This affects all programs, not just
