@@ -11,7 +11,7 @@ How to run
 ----------
 Don't worry, you're not required to compile code :)
 
-Simply run this:  `out/VirtualPiano.jar`
+Simply save this file from the source tree, and run:  `out/VirtualPiano.jar`
 
 You must have java runtime in your machine (most computers these days already have it).
 Usually double-clicking the .jar file is sufficient to launch it.
