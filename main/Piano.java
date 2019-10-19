@@ -36,7 +36,7 @@ public class Piano extends JPanel {
 	private static final int MIN_BASE_PITCH = 0;
 	private static final int MAX_BASE_PITCH = 216;
 
-	private List<PianoKey> pianoKeys;
+	public List<PianoKey> pianoKeys;
 	private Pedal pedal;
 	
 	// of the Piano JPanel
@@ -68,6 +68,7 @@ public class Piano extends JPanel {
 		addMouseMotionListener(new PianoMouseMotionListener());
 		addMouseListener(new PianoMouseListener());
 		addKeyListener(new PianoViewKeyListener());
+		addKeyListener(new Chord.ChordListener());
 	}
 
 	/**
@@ -76,40 +77,42 @@ public class Piano extends JPanel {
 	 */
 	private void initKeyMap() {
 		keyMap = new HashMap<Integer, Integer>();
-		keyMap.put(KeyEvent.VK_Z, 12 * 0 + 0); // C4
-		keyMap.put(KeyEvent.VK_S, 12 * 0 + 1);
-		keyMap.put(KeyEvent.VK_X, 12 * 0 + 2);
-		keyMap.put(KeyEvent.VK_D, 12 * 0 + 3);
-		keyMap.put(KeyEvent.VK_C, 12 * 0 + 4);
-		keyMap.put(KeyEvent.VK_V, 12 * 0 + 5);
-		keyMap.put(KeyEvent.VK_G, 12 * 0 + 6);
-		keyMap.put(KeyEvent.VK_B, 12 * 0 + 7);    
-		keyMap.put(KeyEvent.VK_H, 12 * 0 + 8);
-		keyMap.put(KeyEvent.VK_N, 12 * 0 + 9);
-		keyMap.put(KeyEvent.VK_J, 12 * 0 + 10);
-		keyMap.put(KeyEvent.VK_M, 12 * 0 + 11);
-		keyMap.put(KeyEvent.VK_Q, 12 * 1 + 0); // C5
-		keyMap.put(KeyEvent.VK_2, 12 * 1 + 1);
-		keyMap.put(KeyEvent.VK_W, 12 * 1 + 2);
-		keyMap.put(KeyEvent.VK_3, 12 * 1 + 3);
-		keyMap.put(KeyEvent.VK_E, 12 * 1 + 4);
-		keyMap.put(KeyEvent.VK_R, 12 * 1 + 5);
-		keyMap.put(KeyEvent.VK_5, 12 * 1 + 6);
-		keyMap.put(KeyEvent.VK_T, 12 * 1 + 7);
-		keyMap.put(KeyEvent.VK_6, 12 * 1 + 8);
-		keyMap.put(KeyEvent.VK_Y, 12 * 1 + 9);
-		keyMap.put(KeyEvent.VK_7, 12 * 1 + 10);
-		keyMap.put(KeyEvent.VK_U, 12 * 1 + 11);
-		keyMap.put(KeyEvent.VK_I, 12 * 2 + 0); // C6
-		keyMap.put(KeyEvent.VK_9, 12 * 2 + 1);
-		keyMap.put(KeyEvent.VK_O, 12 * 2 + 2);
-		keyMap.put(KeyEvent.VK_0, 12 * 2 + 3);
-		keyMap.put(KeyEvent.VK_P, 12 * 2 + 4);
-		keyMap.put(KeyEvent.VK_OPEN_BRACKET, 12 * 2 + 5);
-		keyMap.put(KeyEvent.VK_EQUALS, 12 * 2 + 6);
-		keyMap.put(KeyEvent.VK_CLOSE_BRACKET, 12 * 2 + 7);
-		keyMap.put(KeyEvent.VK_BACK_SPACE, 12 * 2 + 8);
-		keyMap.put(KeyEvent.VK_BACK_SLASH, 12 * 2 + 9);
+
+		keyMap.put(KeyEvent.VK_CAPS_LOCK, 12 * 0 + 5); // C4
+		keyMap.put(KeyEvent.VK_A, 12 * 0 + 6); // C4
+		keyMap.put(KeyEvent.VK_Q, 12 * 0 + 7);
+		keyMap.put(KeyEvent.VK_Z, 12 * 0 + 8);
+		keyMap.put(KeyEvent.VK_S, 12 * 0 + 9);
+		keyMap.put(KeyEvent.VK_E, 12 * 0 + 10);
+		keyMap.put(KeyEvent.VK_D, 12 * 0 + 11);
+		keyMap.put(KeyEvent.VK_F, 12 * 1 + 0);
+		keyMap.put(KeyEvent.VK_T, 12 * 1 + 1);
+		keyMap.put(KeyEvent.VK_G, 12 * 1 + 2);
+		keyMap.put(KeyEvent.VK_Y, 12 * 1 + 3);
+		keyMap.put(KeyEvent.VK_H, 12 * 1 + 4);
+		keyMap.put(KeyEvent.VK_J, 12 * 1 + 5);
+		keyMap.put(KeyEvent.VK_I, 12 * 1 + 6); // C5
+		keyMap.put(KeyEvent.VK_K, 12 * 1 + 7);
+		keyMap.put(KeyEvent.VK_O, 12 * 1 + 8);
+		keyMap.put(KeyEvent.VK_L, 12 * 1 + 9);
+		keyMap.put(KeyEvent.VK_P, 12 * 1 + 10);
+		keyMap.put(KeyEvent.VK_M, 12 * 1 + 11);
+		//keyMap.put(KeyEvent.VK_N, 12 * 1 + 6);
+		//keyMap.put(KeyEvent.VK_N, 12 * 1 + 7);
+		//keyMap.put(KeyEvent.VK_6, 12 * 1 + 8);
+		//keyMap.put(KeyEvent.VK_N, 12 * 1 + 9);
+		//keyMap.put(KeyEvent.VK_7, 12 * 1 + 10);
+		//keyMap.put(KeyEvent.VK_N, 12 * 1 + 11);
+		//keyMap.put(KeyEvent.VK_N, 12 * 2 + 0); // C6
+		//keyMap.put(KeyEvent.VK_9, 12 * 2 + 1);
+		//keyMap.put(KeyEvent.VK_N, 12 * 2 + 2);
+		//keyMap.put(KeyEvent.VK_0, 12 * 2 + 3);
+		//keyMap.put(KeyEvent.VK_N, 12 * 2 + 4);
+		//keyMap.put(KeyEvent.VK_OPEN_BRACKET, 12 * 2 + 5);
+		//keyMap.put(KeyEvent.VK_EQUALS, 12 * 2 + 6);
+		//keyMap.put(KeyEvent.VK_CLOSE_BRACKET, 12 * 2 + 7);
+		//keyMap.put(KeyEvent.VK_BACK_SPACE, 12 * 2 + 8);
+		//keyMap.put(KeyEvent.VK_BACK_SLASH, 12 * 2 + 9);
 	}
 	
 	/**
@@ -247,7 +250,7 @@ public class Piano extends JPanel {
 				LayoutConstant.keyFrameHeight + LayoutConstant.instrumentNumberPadding);
 		
 		g.drawString("C" + getBasePitch() / 12,
-				LayoutConstant.octaveNumberLeft,
+				LayoutConstant.octaveNumberLeft*2,
 				LayoutConstant.keyFrameHeight + LayoutConstant.instrumentNumberPadding);
 	}
 	
@@ -377,16 +380,19 @@ public class Piano extends JPanel {
 	private class PianoMouseListener extends MouseAdapter {
 		@Override
 		public void mousePressed(MouseEvent e) {
-			/*int hovered = getKeyNoHovered(e.getPoint());
+			int hovered = getKeyNoHovered(e.getPoint());
+
+			System.out.println(hovered);
+
 			if (hovered != Piano.KEY_NOT_FOUND)
-				pianoKeys.get(hovered).setDown(true);*/
+				pianoKeys.get(hovered).setDown(true);
 		}
 		
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			/*int hovered = getKeyNoHovered(e.getPoint());
+			int hovered = getKeyNoHovered(e.getPoint());
 			if (hovered != Piano.KEY_NOT_FOUND)
-				pianoKeys.get(hovered).setDown(false);*/
+				pianoKeys.get(hovered).setDown(false);
 		}
 	}
 	
