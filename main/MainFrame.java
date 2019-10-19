@@ -21,7 +21,7 @@ import resource.LayoutConstant;
 public class MainFrame extends JFrame {
 	
 	private Canvas canvas;
-	private Piano piano;
+	public static Piano piano;
 	
 	/**
 	 * Returns the content panel.  The content panel contains the canvas and

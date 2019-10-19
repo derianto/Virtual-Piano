@@ -17,10 +17,10 @@ public class LayoutConstant {
 	// piano
 	public static final Color pianoBackgroundColor = new Color(0.4f, 0.1f, 0.1f);
 	
-	public static final int plainKeyWidth = 26;
-	public static final int plainKeyHeight = 100;
-	public static final int chromaticKeyWidth = 15;
-	public static final int chromaticKeyHeight = 60;
+	public static final int plainKeyWidth = 52;
+	public static final int plainKeyHeight = 200;
+	public static final int chromaticKeyWidth = 30;
+	public static final int chromaticKeyHeight = 120;
 	public static final int keyLeftOffset = plainKeyWidth + 1;
 	public static final int keyFrameWidth = plainKeyWidth + 2;
 	public static final int keyFrameHeight = plainKeyHeight + 2;
